@@ -15,7 +15,9 @@ This project is an introduction to building and deploying a Java web app on AWS,
 - **Amazon EC2**: the web app is developed on a cloud virtual server.
 - **VS Code (Remote - SSH)**: used to edit code directly on the EC2 instance.
 - **Git & GitHub**: code is stored and versioned in this repository.
-- **Coming soon**: AWS CodeArtifact, CodeBuild, CodeDeploy and CodePipeline.
+- **AWS CodeArtifact**: stores the project's dependencies in a private repository, with Maven Central as upstream. This keeps package versions consistent, secure and available even if Maven Central goes down.
+- **AWS IAM**: an IAM role gives the EC2 instance read access to CodeArtifact, without storing any credentials on the server.
+- **Coming soon**: AWS CodeBuild, CodeDeploy and CodePipeline.
 
 ## Setup
 ```bash
@@ -23,8 +25,14 @@ git clone https://github.com/VOTRE_USERNAME/nextwork-web-project.git
 cd nextwork-web-project
 ```
 
+To build with CodeArtifact, export an authorization token first, then compile:
+```bash
+export CODEARTIFACT_AUTH_TOKEN=$(aws codeartifact get-authorization-token --domain nextwork --domain-owner YOUR_ACCOUNT_ID --region eu-west-3 --query authorizationToken --output text)
+mvn -s settings.xml compile
+```
+
 ## Contact
-Taib Amjoud – votre.email@exemple.com
+Taib Amjoud – [LinkedIn](https://www.linkedin.com/in/VOTRE_PROFIL)
 
 ## Acknowledgments
 Thanks to NextWork for the project guide.
