@@ -18,17 +18,8 @@ This project shows how to build and deploy a Java web app on AWS with a fully au
 
 ## Architecture
 
-```mermaid
-flowchart LR
-    A[Developer<br/>git push] --> B[GitHub<br/>nextwork-web-project]
-    B -- webhook --> C[AWS CodePipeline]
-    C --> D[Source stage<br/>code as ZIP]
-    D --> E[Build stage<br/>AWS CodeBuild]
-    E -- dependencies --> F[AWS CodeArtifact]
-    E -- WAR artifact --> G[Amazon S3]
-    G --> H[Deploy stage<br/>AWS CodeDeploy]
-    H --> I[EC2 production<br/>Apache + Tomcat]
-```
+<img width="1474" height="476" alt="architecture-complete" src="https://github.com/user-attachments/assets/32d06a3a-49fc-4650-a062-9dcd1453968c" />
+
 
 ## Technologies
 - **Amazon EC2**: one instance for development, one for production.
@@ -93,7 +84,7 @@ git push origin master
 Then follow the execution in the CodePipeline console. Once all three stages are green, the new version is live at the production instance's public DNS (over `http://`).
 
 ## Contact
-Taib Amjoud – [LinkedIn](https://www.linkedin.com/in/VOTRE_PROFIL)
+Taib Amjoud – [LinkedIn](www.linkedin.com/in/taib-amjoud)
 
 ## Acknowledgments
 Thanks to NextWork for the project guide.
